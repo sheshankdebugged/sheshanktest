@@ -1,26 +1,36 @@
 {
-    "author": "Sheshank Jamwal",
-    "name": "okcupid",
-    "description": "Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.",
-    "version": "0.0.1",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/tranhungt/okcupidjs.git"
-    },
-    "keywords": [
-        "ok",
-        "ok cupid",
-        "okcupid",
-        "api",
-        "wrapper",
-        "bot"
-    ],
-    "license": "MIT",
-    "main": "index.js",
-    "engines": {
-        "node": "*"
-    },
-    "dependencies": {
-        "request": "~2.83.0"
-    }
+  "author": "Sheshank Jamwal",
+  "name": "okcupid",
+  "description": "OKCupidjs ========= Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sheshankdebugged/sheshanktest.git"
+  },
+  "keywords": [
+    "ok",
+    "ok cupid",
+    "okcupid",
+    "api"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "request": "~2.83.0"
+  },
+  "bugs": {
+    "url": "https://github.com/sheshankdebugged/sheshanktest/issues"
+  },
+  "homepage": "https://github.com/sheshankdebugged/sheshanktest#readme",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
