@@ -371,7 +371,7 @@ To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
 ---
 ### Get Incoming Likes
 
-`.getLikes(options, callback)`
+`.getIncomingLikes(options, callback)`
 
 Perform a request for incoming Likes, as seen on the incoming Likes page.
 
