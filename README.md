@@ -2,11 +2,6 @@ OKCupidjs
 =========
 Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.
 
-We're on Slack!
-===============
-Talk about the project on our slack: 
-https://publicslack.com/slacks/okcupidjs/invites/new
-
 
 Installation
 ===========
@@ -62,6 +57,7 @@ Working endpoints as of 9/21/18
 [Get Message Thread](#edit-profile)		|`.getMessageThread(thread_id, callback)` 	|✅|	adjusted to use oauth routes
 [Edit Profile](#edit-profile)			|`.editProfile(edit_category, options, callback)`|✅|	adjusted to use oauth routes
 [Get Likes](#get-likes)				|`.getLikes(options, callback)`			|✅|
+[Get Incoming Likes](#get-incoming-likes)				|`.getIncomingLikes(options, callback)`			|✅|
 
 ---
 ### Login
@@ -357,6 +353,27 @@ var query = {
 `.getLikes(options, callback)`
 
 Perform a request for Likes, as seen on the Likes page.
+
+The `options` variable is used to construct the query string for the request, for example:
+
+```javascript
+var options = {
+	fields: "likes,thumbs.limit(1){225x225},location,userinfo,online,percentages,last_contacts"
+}
+```
+
+It is possible to distinguish a "match" from a "like" by looking at the returned `section`
+property for each user.
+
+The results of this request are paginated in the same way as the `search` [method](#search-browse-matches).
+To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
+
+---
+### Get Incoming Likes
+
+`.getLikes(options, callback)`
+
+Perform a request for incoming Likes, as seen on the incoming Likes page.
 
 The `options` variable is used to construct the query string for the request, for example:
 

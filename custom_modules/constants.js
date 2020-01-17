@@ -18,7 +18,8 @@ module.exports = {
     edit_profile: 'https://www.okcupid.com/1/apitun/profile/save_essay',
     connections: 'https://www.okcupid.com/1/apitun/connections/outgoing',
     incomingconnections: 'https://www.okcupid.com/1/apitun/connections/incoming',
+    incomingIntroconnections: 'https://www.okcupid.com/1/apitun/connections/intro',
     user_questions: 'http://www.okcupid.com/1/apitun/profile/{username}/answers',
-  },
+  }
 }
 
