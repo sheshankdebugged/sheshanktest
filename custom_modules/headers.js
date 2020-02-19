@@ -1,17 +1,6 @@
-var oauth_token = ''
 
-// Sets the OAuth token. Used by client when logging in.
-function setOAuthToken(token) {
-  oauth_token = token
-}
-
-// Avaliable if client should need to clear the OAuth token.
-function clearOAuthToken() {
-  oauth_token = ''
-}
-
-// Will return the header with the OAuth token if token has been set.
-function getHeaders() {
+// Will return the header with the OAuth token.
+function getHeaders(oauth_token) {
   if (oauth_token) {
     return {
         'x-okcupid-platform':'DESKTOP', 
@@ -28,8 +17,6 @@ function getHeaders() {
 }
 
 module.exports = {
-  getHeaders: getHeaders,
-  setOAuthToken: setOAuthToken,
-  clearOAuthToken: clearOAuthToken
+  getHeaders: getHeaders
 }
 
