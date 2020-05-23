@@ -41,7 +41,7 @@ The following trivial example shows how to use the cursors to print out the firs
 var base_query = {i_want: "women", they_want: "men" , radius: 25 };
 
 function search(okc, query, count) {
-  okc.search(query, function(err,res,body) {
+  okc.search(cookies,query, function(err,res,body) {
     // print out usernames
     body.data.forEach(function(user) {
       console.log(user.username);

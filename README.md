@@ -1,4 +1,4 @@
-OKCupidjs
+OkCupidjs
 =========
 Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.
 
@@ -11,7 +11,7 @@ Installation
 Usage
 =====
 
-All methods are asynchronous, and will return a standard `(err, res, body)` params to your callback. The body will already be json parsed into a json object for easy handling. The following demonstrates how to require and instantiate OKCupidjs.
+All methods are asynchronous, and will return a standard `(err, res, body)` params to your callback. The body will already be json parsed into a json object for easy handling. The following demonstrates how to require and instantiate okcupidjs.
 
 ```javascript
 var OKCupid = require('okcupidjs')
@@ -44,20 +44,20 @@ Working endpoints as of 9/21/18
 |Title|Method|Works?|Comment|
 |-----|------|:----:|-------|
 [Login](#login)					|`.login(username, password, callback)` 	|✅|
-[Get Quickmatch](#get-quickmatch)		|`.getQuickmatch(callback)`			|✅|	
-[Visit User](#visit-user)			|`.visitUser(username, callback)` 		|❌| 	needs the okc_api=1 and returns nothing
-[Like](#like)					|`.like(user_id, callback)` 			|✅|	
-[Unlike](#unlike)				|`.unlike(user_id, callback)` 			|✅|	
-[Get User's Profile](#get-users-profile)	|`.getUserProfile(username, callback)` 		|❌|	Always returns html, newline if okc_api
-[Get User's Questions](#get-users-questions)	|`.getUserQuestions(username, options, callback)` 	|✅|
-[Get Visitors](#get-visitors)			|`.getVisitors(callback)` 			|❌| 	get JSON OKC developer/recruiting message
-[Send Message](#send-message)			|`.sendMessage(user_id, message_body, callback)`|✅| 	
-[Get Recent Messages](#get-recent-messages)	|`.getRecentMessages(callback)`			|❌| 	route changed
-[Search (Browse Matches)](#search-browse-matches)	|`.search(options, callback) `			|✅|	
-[Get Message Thread](#edit-profile)		|`.getMessageThread(thread_id, callback)` 	|✅|	adjusted to use oauth routes
-[Edit Profile](#edit-profile)			|`.editProfile(edit_category, options, callback)`|✅|	adjusted to use oauth routes
-[Get Likes](#get-likes)				|`.getLikes(options, callback)`			|✅|
-[Get Incoming Likes](#get-incoming-likes)				|`.getIncomingLikes(options, callback)`			|✅|
+[Get Quickmatch](#get-quickmatch)		|`.getQuickmatch(cookies,callback)`			|✅|	
+[Visit User](#visit-user)			|`.visitUser(cookies,username, callback)` 		|❌| 	needs the okc_api=1 and returns nothing
+[Like](#like)					|`.like(cookies,user_id, callback)` 			|✅|	
+[Unlike](#unlike)				|`.unlike(cookies,user_id, callback)` 			|✅|	
+[Get User's Profile](#get-users-profile)	|`.getUserProfile(cookies,username, callback)` 		|❌|	Always returns html, newline if okc_api
+[Get User's Questions](#get-users-questions)	|`.getUserQuestions(cookies,username, options, callback)` 	|✅|
+[Get Visitors](#get-visitors)			|`.getVisitors(cookies,callback)` 			|❌| 	get JSON OKC developer/recruiting message
+[Send Message](#send-message)			|`.sendMessage(cookies,user_id, message_body, callback)`|✅| 	
+[Get Recent Messages](#get-recent-messages)	|`.getRecentMessages(cookies,callback)`			|❌| 	route changed
+[Search (Browse Matches)](#search-browse-matches)	|`.search(cookies,options, callback) `			|✅|	
+[Get Message Thread](#edit-profile)		|`.getMessageThread(cookies,thread_id, callback)` 	|✅|	adjusted to use oauth routes
+[Edit Profile](#edit-profile)			|`.editProfile(cookies,edit_category, options, callback)`|✅|	adjusted to use oauth routes
+[Get Likes](#get-likes)				|`.getLikes(cookies,options, callback)`			|✅|
+[Get Incoming Likes](#get-incoming-likes)				|`.getIncomingLikes(cookies,options, callback)`			|✅|
 
 ---
 ### Login
@@ -73,7 +73,7 @@ Upon success, response will automatically store a cookie for subsequent requests
 ---
 ### Get Quickmatch
 
-`.getQuickmatch(callback)`
+`.getQuickmatch(cookies,callback)`
 
 This is the method you want to call first.
 It gets you a new user in the area. Json body will contain target_userid and username for you to call `.rate`, `.visitUser`, `.getUserProfile`.
@@ -85,7 +85,7 @@ It gets you a new user in the area. Json body will contain target_userid and use
 ---
 ### Visit User
 
-`.visitUser(username, callback)`
+`.visitUser(cookies,username, callback)`
 
 Takes a username. This visit method will emulate you actually visiting the user via browser.
 
@@ -94,26 +94,26 @@ Takes a username. This visit method will emulate you actually visiting the user 
 ---
 ### Like
 
-`.like(user_id, callback)`
+`.like(cookies,user_id, callback)`
 
 Takes a username. Will cause you to like the user associated with that user ID.
 
 ---
 ### Unlike
 
-`.unlike(user_id, callback)`
+`.unlike(cookies,user_id, callback)`
 
 Takes a user ID. Will cause you to unlike the user associated with that user ID. 
 
 ---
 ### Get User's Profile
-`.getUserProfile(username, callback)`
+`.getUserProfile(cookies,username, callback)`
 
 Returns a json of the user profile. Contains all the information as you would see if you visited the user's profile via browser. This will not register your name under the user's "visitor" list.
 
 ---
 ### Get User's Questions
-`.getUserQuestions(username, options, callback)`
+`.getUserQuestions(cookies,username, options, callback)`
 
 Returns a json of user question/answer data.
 
@@ -122,8 +122,8 @@ The results come back with a page hash. To get the next page results, this metho
 The same process can also be applied in reverse with `before`. 
 
 ```
-okc.getUserQuestions(username, 1, cb) // First 10 questions
-okc.getUserQuestions(username, 11, cb) // Next 10 questions
+okc.getUserQuestions(cookies,username, 1, cb) // First 10 questions
+okc.getUserQuestions(cookies,username, 11, cb) // Next 10 questions
 // Etc...
 ```
 
@@ -131,19 +131,19 @@ okc.getUserQuestions(username, 11, cb) // Next 10 questions
 
 ---
 ### Get Visitors
-`.getVisitors(callback)`
+`.getVisitors(cookies,callback)`
 
 Returns a list of your "stalkers" who have visited you.
 
 ---
 ### Send Message
-`.sendMessage(user_id, message_body, callback)`
+`.sendMessage(cookies,user_id, message_body, callback)`
 
 Send a message to a user. 
 
 ---
 ### Get Recent Messages
-`.getRecentMessages(callback)`
+`.getRecentMessages(cookies,callback)`
 
 Body parameter contains metadata about the inbox and a collection of the first 30 message objects in the inbox.
 
@@ -174,7 +174,7 @@ An inbox message object will contain metadata about the message and a snippet of
 
 ---
 ### Get Message Thread
-`getMessageThread(thread_id, callback)`
+`getMessageThread(cookies,thread_id, callback)`
 
 Get the message thread (all sent and received messages) with a thread ID. Body parameter contains metadata about the thread and a collection of message objects.
 
@@ -207,7 +207,7 @@ Usage Note: The thread ID can be collected from an inbox message object. Get the
 ---
 ### Search (Browse Matches)
 
-`.search(options, callback)`
+`.search(cookies,options, callback)`
 
 Perform a search as if visiting "Browse Matches" tab on the website. Search takes a options for determining filters, order, etc.
 
@@ -350,7 +350,7 @@ var query = {
 ---
 ### Get Likes
 
-`.getLikes(options, callback)`
+`.getLikes(cookies,options, callback)`
 
 Perform a request for Likes, as seen on the Likes page.
 
@@ -371,7 +371,7 @@ To learn how to access data on additional pages, read [SEARCH.md](SEARCH.md).
 ---
 ### Get Incoming Likes
 
-`.getIncomingLikes(options, callback)`
+`.getIncomingLikes(cookies,options, callback)`
 
 Perform a request for incoming Likes, as seen on the incoming Likes page.
 
@@ -425,7 +425,7 @@ okc.login('okc_username', 'okc_password', function(err, res, body) {
     "drugs": ["never"]
   }
 
-  okc.search(query, function(err, res, body) {
+  okc.search(cookies,query, function(err, res, body) {
     if (err) {
       console.log("Failed to get search results.");
     } 

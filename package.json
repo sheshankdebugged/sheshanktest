@@ -2,7 +2,7 @@
   "author": "Sheshank Jamwal",
   "name": "okcupidtest",
   "description": "OKCupidjs ========= Automate your OKCupid Activity. This is an API Wrapper for OkCupid App, allowing you to automate processes and collect data for further analysis.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/sheshankdebugged/sheshanktest.git"
